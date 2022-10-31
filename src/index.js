@@ -4,7 +4,17 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+  let result = '';
+  for (let i = 0; i < string.length; i += 1) {
+    if (string[i] === 'z' || string[i] === 'v') {
+      result = `${result}*`;
+    } else {
+      result = `${result}${string[i]}`;
+    }
+  }
+  return result;
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +26,16 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+  let result = '';
+  if (string.includes(word)) {
+    result = `${string.slice(0, string.indexOf(word))}${newWord}${string.slice(string.indexOf(word) + word.length)}`;
+  } else {
+    result = string;
+  }
+
+  return result;
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +43,10 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+  let result = string.substr(0, length);
+  return result;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +59,14 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+  let result = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i].toLowerCase() === symbol.toLowerCase()) {
+      result += 1;
+    }
+  }return result;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +83,12 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+  let result = 0;
+  while (true) {
+    if (string.indexOf(symbol)) {
+      result += 1;
+      break;
+    }
+  } return result;
+};
